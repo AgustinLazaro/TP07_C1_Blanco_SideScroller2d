@@ -40,6 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3281236433551494393}
+  - component: {fileID: 1846311877249759908}
   - component: {fileID: 3034171783706853809}
   - component: {fileID: 4353821435549564215}
   - component: {fileID: 5178359951129950835}
@@ -66,6 +67,25 @@ Transform:
   - {fileID: 5722158729636146352}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1846311877249759908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8828096402174241058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00d32f0e1bdf2ce47a6d3a8045237f2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
+  moveSpeed: 9
+  jumpForce: 12
+  groundCheck: {fileID: 0}
+  checkRadius: 0.2
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!70 &3034171783706853809
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

@@ -27,7 +27,12 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        
+        xInput = Input.GetAxisRaw("Horizontal");
+
+        if (Input.GetButtonDown("Jump") && isGrounded)
+        { 
+            RequestedJump = true;
+        }
     }
 
     private void FixedUpdate()
