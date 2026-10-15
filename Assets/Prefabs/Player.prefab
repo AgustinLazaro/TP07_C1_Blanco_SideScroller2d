@@ -81,7 +81,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
   moveSpeed: 9
   jumpForce: 12
-  groundCheck: {fileID: 0}
+  groundCheck: {fileID: 5722158729636146352}
   checkRadius: 0.2
   groundLayer:
     serializedVersion: 2
@@ -199,8 +199,8 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
-  m_Color: {r: 0.38196433, g: 0.9622642, b: 0.22331783, a: 1}
+  m_Sprite: {fileID: 3204480812468917802, guid: bd8806beceb0f914e826d05427a94c53, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
