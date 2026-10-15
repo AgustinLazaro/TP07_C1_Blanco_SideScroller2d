@@ -37,7 +37,14 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
+       isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, groundLayer);
+       rb.linearVelocity = new Vector2(xInput * moveSpeed, rb.linearVelocity.y);
        
+       if (RequestedJump)
+       {
+           rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+            RequestedJump = false;
+       }
     }
 
     private void OnDrawGizmosSelected()
