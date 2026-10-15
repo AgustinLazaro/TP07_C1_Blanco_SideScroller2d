@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class PlayerMovement : MonoBehaviour
 {
     [Header("Movement settings")]
@@ -17,9 +18,11 @@ public class PlayerMovement : MonoBehaviour
     private float xInput;
     private bool RequestedJump;
     private bool isGrounded;
+
     private void Awake()
     {
-        
+        rb = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     void Update()
@@ -34,6 +37,10 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnDrawGizmosSelected()
     {
-       
+       if (groundCheck != null)
+        {
+            Gizmos.color = Color.green;
+            Gizmos.DrawWireSphere(groundCheck.position, checkRadius);
+        }
     }
 }
