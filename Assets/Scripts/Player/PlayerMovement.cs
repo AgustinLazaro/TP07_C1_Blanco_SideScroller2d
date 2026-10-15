@@ -33,6 +33,9 @@ public class PlayerMovement : MonoBehaviour
         { 
             RequestedJump = true;
         }
+
+        if (xInput != 0) spriteRenderer.flipX = xInput < 0;
+
     }
 
     private void FixedUpdate()
