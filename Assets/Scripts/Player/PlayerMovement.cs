@@ -27,6 +27,12 @@ public class PlayerMovement : MonoBehaviour
     private bool isCrouching;
     private Vector2 standSize;
     private Vector2 standOffset;
+
+    [Header("Audio Settings")]
+    [SerializeField] private AudioSource sfxSource; 
+    [SerializeField] private AudioSource stepsSource;
+    [SerializeField] private AudioClip jumpSound;
+    [SerializeField] private AudioClip stepSound;
     #endregion
 
     #region Unity Lifecycle
