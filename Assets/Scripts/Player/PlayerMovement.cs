@@ -51,6 +51,7 @@ public class PlayerMovement : MonoBehaviour
 
         anim.SetFloat("Speed", Mathf.Abs(xInput));
         anim.SetBool("IsCrouching", isCrouching);
+        anim.SetBool("IsGrounded", isGrounded);
 
     }
 
