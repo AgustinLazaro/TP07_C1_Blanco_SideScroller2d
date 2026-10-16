@@ -52,11 +52,16 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, groundLayer);
+
         float currentSpeed = moveSpeed;
+        col.size = standSize;
+        col.offset = standOffset;
 
         if (isCrouching)
         {
             currentSpeed = moveSpeed * 0.5f;
+            col.size = new Vector2(standSize.x, standSize.y / 2f);
+            col.offset = new Vector2(standOffset.x, standOffset.y - (standSize.y / 4f));
         }
 
         rb.linearVelocity = new Vector2(xInput * currentSpeed, rb.linearVelocity.y);
