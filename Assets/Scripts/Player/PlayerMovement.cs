@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D rb;
     private SpriteRenderer spriteRenderer;
     private CapsuleCollider2D col;
+    private Animator anim;
 
     [Header("Movement Settings")]
     [SerializeField] private float moveSpeed = 9f;
@@ -31,6 +32,7 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         col = GetComponent<CapsuleCollider2D>();
+        anim = GetComponent<Animator>();
         standSize = col.size;
         standOffset = col.offset;
     }
@@ -46,6 +48,8 @@ public class PlayerMovement : MonoBehaviour
         if (xInput != 0) spriteRenderer.flipX = xInput < 0;
 
         isCrouching = Input.GetKey(KeyCode.LeftControl) && isGrounded;
+
+        anim.SetFloat("Speed", Mathf.Abs(xInput));
 
     }
 
