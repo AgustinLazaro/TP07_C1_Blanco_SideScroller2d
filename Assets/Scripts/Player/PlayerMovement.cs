@@ -1,6 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(CapsuleCollider2D))]
 public class PlayerMovement : MonoBehaviour
 {
     [Header("Movement settings")]
@@ -19,6 +20,10 @@ public class PlayerMovement : MonoBehaviour
     private bool RequestedJump;
     private bool isGrounded;
     private bool isCrouching;
+
+    private CapsuleCollider2D col;
+    private Vector2 standSize;
+    private Vector2 standOffset;
 
     private void Awake()
     {
