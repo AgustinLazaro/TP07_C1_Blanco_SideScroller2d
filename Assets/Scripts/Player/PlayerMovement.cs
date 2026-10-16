@@ -18,6 +18,7 @@ public class PlayerMovement : MonoBehaviour
     private float xInput;
     private bool RequestedJump;
     private bool isGrounded;
+    private bool isCrouching;
 
     private void Awake()
     {
@@ -33,29 +34,37 @@ public class PlayerMovement : MonoBehaviour
         { 
             RequestedJump = true;
         }
-
         if (xInput != 0) spriteRenderer.flipX = xInput < 0;
+
+        isCrouching = Input.GetKey(KeyCode.LeftControl) && isGrounded;
 
     }
 
     private void FixedUpdate()
     {
-       isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, groundLayer);
-       rb.linearVelocity = new Vector2(xInput * moveSpeed, rb.linearVelocity.y);
-       
-       if (RequestedJump)
-       {
-           rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+        isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, groundLayer);
+        float currentSpeed = moveSpeed;
+
+        if (isCrouching)
+        {
+            currentSpeed = moveSpeed * 0.5f;
+        }
+
+        rb.linearVelocity = new Vector2(xInput * currentSpeed, rb.linearVelocity.y);
+
+        if (RequestedJump)
+        {
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
             RequestedJump = false;
-       }
+        }
     }
 
     private void OnDrawGizmosSelected()
     {
        if (groundCheck != null)
-        {
+       {
             Gizmos.color = Color.green;
             Gizmos.DrawWireSphere(groundCheck.position, checkRadius);
-        }
+       }
     }
 }
