@@ -4,24 +4,25 @@ using UnityEngine;
 [RequireComponent(typeof(CapsuleCollider2D))]
 public class PlayerMovement : MonoBehaviour
 {
-    [Header("Movement settings")]
-    [SerializeField] private float moveSpeed = 9f;
-    [SerializeField] private float jumpForce = 12f;
-
-    [Header("Ground check")]    
-    [SerializeField] private Transform groundCheck;
-    [SerializeField] private float checkRadius =0.2f;
-    [SerializeField] private LayerMask groundLayer;
-
+    [Header("Components")]
     private Rigidbody2D rb;
     private SpriteRenderer spriteRenderer;
-    
-    private float xInput;
-    private bool RequestedJump;
-    private bool isGrounded;
-    private bool isCrouching;
-
     private CapsuleCollider2D col;
+
+    [Header("Movement Settings")]
+    [SerializeField] private float moveSpeed = 9f;
+    private float xInput;
+
+    [Header("Jump & Ground Settings")]
+    [SerializeField] private float jumpForce = 12f;
+    [SerializeField] private Transform groundCheck;
+    [SerializeField] private float checkRadius = 0.2f;
+    [SerializeField] private LayerMask groundLayer;
+    private bool isGrounded;
+    private bool RequestedJump;
+
+    [Header("Crouch Settings")]
+    private bool isCrouching;
     private Vector2 standSize;
     private Vector2 standOffset;
 
@@ -29,6 +30,9 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        col = GetComponent<CapsuleCollider2D>();
+        standSize = col.size;
+        standOffset = col.offset;
     }
 
     void Update()
