@@ -4,6 +4,7 @@ using UnityEngine;
 [RequireComponent(typeof(CapsuleCollider2D))]
 public class PlayerMovement : MonoBehaviour
 {
+    #region Variables
     [Header("Components")]
     private Rigidbody2D rb;
     private SpriteRenderer spriteRenderer;
@@ -26,7 +27,9 @@ public class PlayerMovement : MonoBehaviour
     private bool isCrouching;
     private Vector2 standSize;
     private Vector2 standOffset;
+    #endregion
 
+    #region Unity Lifecycle
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -42,7 +45,7 @@ public class PlayerMovement : MonoBehaviour
         xInput = Input.GetAxisRaw("Horizontal");
 
         if (Input.GetButtonDown("Jump") && isGrounded)
-        { 
+        {
             RequestedJump = true;
         }
         if (xInput != 0) spriteRenderer.flipX = xInput < 0;
@@ -52,7 +55,7 @@ public class PlayerMovement : MonoBehaviour
         anim.SetFloat("Speed", Mathf.Abs(xInput));
         anim.SetBool("IsCrouching", isCrouching);
         anim.SetBool("IsGrounded", isGrounded);
-
+        anim.SetFloat("yVelocity", rb.linearVelocity.y);
     }
 
     private void FixedUpdate()
@@ -78,13 +81,16 @@ public class PlayerMovement : MonoBehaviour
             RequestedJump = false;
         }
     }
+    #endregion
 
+    #region Debug & Gizmos
     private void OnDrawGizmosSelected()
     {
-       if (groundCheck != null)
-       {
+        if (groundCheck != null)
+        {
             Gizmos.color = Color.green;
             Gizmos.DrawWireSphere(groundCheck.position, checkRadius);
-       }
+        }
     }
+    #endregion
 }
