@@ -50,6 +50,7 @@ public class PlayerMovement : MonoBehaviour
         isCrouching = Input.GetKey(KeyCode.LeftControl) && isGrounded;
 
         anim.SetFloat("Speed", Mathf.Abs(xInput));
+        anim.SetBool("IsCrouching", isCrouching);
 
     }
 
