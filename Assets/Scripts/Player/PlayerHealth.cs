@@ -42,6 +42,7 @@ public class PlayerHealth : MonoBehaviour
         {
             currentHealth = 0;
             audioSource.PlayOneShot(gameOverSound);
+            anim.SetTrigger("Die");
             Debug.Log("Game over");
         }
         else
