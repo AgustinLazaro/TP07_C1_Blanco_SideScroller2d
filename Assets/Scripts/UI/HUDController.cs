@@ -1,5 +1,5 @@
-using TMPro;
 using UnityEngine;
+using TMPro;
 using UnityEngine.UI;
 
 public class HUDController : MonoBehaviour
@@ -13,20 +13,24 @@ public class HUDController : MonoBehaviour
 
     private void OnEnable()
     {
-        PlayerController.OnHealthChanged += UpdateHealthBar;
+        // Lo conectaremos cuando creemos el script PlayerHealth
+        // PlayerHealth.OnHealthChanged += UpdateHealthBar;
     }
 
     private void OnDisable()
     {
-        PlayerController.OnHealthChanged -= UpdateHealthBar;
+        // Lo conectaremos cuando creemos el script PlayerHealth
+        // PlayerHealth.OnHealthChanged -= UpdateHealthBar;
     }
 
     private void Update()
     {
-        UpdateScoreDisplay();
-        UpdateSpeedDisplay();
+        // Lo silenciamos hasta tener un GameManager para este juego
+        // UpdateScoreDisplay();
+        // UpdateSpeedDisplay();
     }
 
+    /* Guardamos esta lógica para cuando sumemos coleccionables
     private void UpdateScoreDisplay()
     {
         _scoreText.text = GameManager.Instance.CurrentScore.ToString("0");
@@ -42,10 +46,15 @@ public class HUDController : MonoBehaviour
             _speedText.text = $"speed = {speedInt}x";
         }
     }
+    */
 
-    private void UpdateHealthBar(float currentHealth, float maxHealth)
+    // Esta función está perfecta, la dejamos tal cual para usarla en breve
+    public void UpdateHealthBar(float currentHealth, float maxHealth)
     {
-        _healthSlider.maxValue = maxHealth;
-        _healthSlider.value = currentHealth;
+        if (_healthSlider != null)
+        {
+            _healthSlider.maxValue = maxHealth;
+            _healthSlider.value = currentHealth;
+        }
     }
 }
