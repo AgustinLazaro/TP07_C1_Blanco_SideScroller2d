@@ -6,6 +6,10 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private float maxHealth = 100f;
     [SerializeField] private float currentHealth;
 
+    [Header("Audio Settings")]
+    [SerializeField] private AudioClip damageSound;
+    [SerializeField] private AudioSource audioSource;
+
     private HUDController hud;
 
     private void Start()
@@ -27,5 +31,6 @@ public class PlayerHealth : MonoBehaviour
     {
         currentHealth -= damageAmount;
         hud.UpdateHealthBar(currentHealth, maxHealth);
+        audioSource.PlayOneShot(damageSound);
     }
 }
