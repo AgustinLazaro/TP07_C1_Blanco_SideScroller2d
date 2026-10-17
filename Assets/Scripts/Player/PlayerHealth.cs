@@ -9,6 +9,7 @@ public class PlayerHealth : MonoBehaviour
     [Header("Audio Settings")]
     [SerializeField] private AudioClip damageSound;
     [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip gameOverSound;
 
     private HUDController hud;
 
@@ -31,6 +32,17 @@ public class PlayerHealth : MonoBehaviour
     {
         currentHealth -= damageAmount;
         hud.UpdateHealthBar(currentHealth, maxHealth);
-        audioSource.PlayOneShot(damageSound);
+
+        if (currentHealth <=0)
+        {
+            currentHealth = 0;
+            audioSource.PlayOneShot(gameOverSound);
+            Debug.Log("Game over");
+        }
+        else
+        { 
+            audioSource.PlayOneShot(damageSound);
+        }
+
     }
 }
