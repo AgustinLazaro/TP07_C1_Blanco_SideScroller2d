@@ -48,11 +48,8 @@ public class HUDController : MonoBehaviour
     */
 
     public void UpdateHealthBar(float currentHealth, float maxHealth)
-    {
-        if (_healthSlider != null)
-        {
-            _healthSlider.maxValue = maxHealth;
-            _healthSlider.value = currentHealth;
-        }
+    { 
+        _healthSlider.maxValue = maxHealth;
+        _healthSlider.value = currentHealth;
     }
 }
