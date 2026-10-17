@@ -31,6 +31,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 3281236433551494393}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5207529523030737819
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5168532613652669189}
+  m_Layer: 0
+  m_Name: FirePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5168532613652669189
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5207529523030737819}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3281236433551494393}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8828096402174241058
 GameObject:
   m_ObjectHideFlags: 0
@@ -42,6 +73,7 @@ GameObject:
   - component: {fileID: 3281236433551494393}
   - component: {fileID: 101347358881612171}
   - component: {fileID: 1846311877249759908}
+  - component: {fileID: 3731430186346617029}
   - component: {fileID: 4851134314425191874}
   - component: {fileID: 3034171783706853809}
   - component: {fileID: 4353821435549564215}
@@ -69,6 +101,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5722158729636146352}
+  - {fileID: 5168532613652669189}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &101347358881612171
@@ -86,7 +119,8 @@ MonoBehaviour:
   maxHealth: 100
   currentHealth: 0
   damageSound: {fileID: 8300000, guid: b2c37788c434b6c4da0d64852326cf4f, type: 3}
-  audioSource: {fileID: 1521509502673198483}
+  audioSource: {fileID: 5633028277224071590}
+  gameOverSound: {fileID: 8300000, guid: 58af06cb855aacd40ba1d8fd2308ddca, type: 3}
 --- !u!114 &1846311877249759908
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -106,10 +140,25 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
-  sfxSource: {fileID: 1521509502673198483}
+  sfxSource: {fileID: 5633028277224071590}
   stepsSource: {fileID: 1521509502673198483}
   jumpSound: {fileID: 8300000, guid: 629d37a0dc750bd48aef5c5c842e30f3, type: 3}
   stepSound: {fileID: 8300000, guid: 6765bd12a99e1904da816023b16d27fc, type: 3}
+  landingSound: {fileID: 8300000, guid: 6bdca8c50b928314399c7a57d30ba330, type: 3}
+--- !u!114 &3731430186346617029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8828096402174241058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 340ef149f6b04934b8144d1dcf7ef292, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerAttack
+  projectilePrefab: {fileID: 7932222524348236318, guid: 8129459304105834ca294436e05bc7f6, type: 3}
+  firePoint: {fileID: 5168532613652669189}
 --- !u!95 &4851134314425191874
 Animator:
   serializedVersion: 7
@@ -361,7 +410,7 @@ AudioSource:
   m_GameObject: {fileID: 8828096402174241058}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -369965242776168628, guid: fe826fd46d2e2514e8ac49ec2047c944, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1

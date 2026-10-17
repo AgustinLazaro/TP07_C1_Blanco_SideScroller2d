@@ -349,11 +349,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!82 &619505111 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 5633028277224071590, guid: 860e6b4e90238914e832d7a6a99cec27, type: 3}
-  m_PrefabInstance: {fileID: 1109127162}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1037191073
 GameObject:
   m_ObjectHideFlags: 0
@@ -441,22 +436,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 101347358881612171, guid: 860e6b4e90238914e832d7a6a99cec27, type: 3}
-      propertyPath: audioSource
-      value: 
-      objectReference: {fileID: 619505111}
-    - target: {fileID: 101347358881612171, guid: 860e6b4e90238914e832d7a6a99cec27, type: 3}
-      propertyPath: gameOverSound
-      value: 
-      objectReference: {fileID: 8300000, guid: 58af06cb855aacd40ba1d8fd2308ddca, type: 3}
-    - target: {fileID: 1846311877249759908, guid: 860e6b4e90238914e832d7a6a99cec27, type: 3}
-      propertyPath: sfxSource
-      value: 
-      objectReference: {fileID: 619505111}
-    - target: {fileID: 1846311877249759908, guid: 860e6b4e90238914e832d7a6a99cec27, type: 3}
-      propertyPath: landingSound
-      value: 
-      objectReference: {fileID: 8300000, guid: 6bdca8c50b928314399c7a57d30ba330, type: 3}
     - target: {fileID: 3281236433551494393, guid: 860e6b4e90238914e832d7a6a99cec27, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -497,10 +476,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5633028277224071590, guid: 860e6b4e90238914e832d7a6a99cec27, type: 3}
-      propertyPath: OutputAudioMixerGroup
-      value: 
-      objectReference: {fileID: -369965242776168628, guid: fe826fd46d2e2514e8ac49ec2047c944, type: 2}
     - target: {fileID: 8828096402174241058, guid: 860e6b4e90238914e832d7a6a99cec27, type: 3}
       propertyPath: m_Name
       value: Player
