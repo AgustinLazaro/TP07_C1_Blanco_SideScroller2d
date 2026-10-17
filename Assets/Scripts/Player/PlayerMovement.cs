@@ -87,7 +87,18 @@ public class PlayerMovement : MonoBehaviour
     {
         if (xInput != 0)
         {
-            spriteRenderer.flipX = xInput < 0;
+            float facingDirection;
+
+            if (xInput > 0)
+            {
+                facingDirection = 1f;
+            }
+            else
+            {
+                facingDirection = -1f;
+            }
+
+            transform.localScale = new Vector3(facingDirection, 1f, 1f);
         }
     }
 
