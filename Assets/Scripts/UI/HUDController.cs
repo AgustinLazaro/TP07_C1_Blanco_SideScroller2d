@@ -13,24 +13,23 @@ public class HUDController : MonoBehaviour
 
     private void OnEnable()
     {
-        // Lo conectaremos cuando creemos el script PlayerHealth
         // PlayerHealth.OnHealthChanged += UpdateHealthBar;
     }
 
     private void OnDisable()
     {
-        // Lo conectaremos cuando creemos el script PlayerHealth
+        
         // PlayerHealth.OnHealthChanged -= UpdateHealthBar;
     }
 
     private void Update()
     {
-        // Lo silenciamos hasta tener un GameManager para este juego
+       
         // UpdateScoreDisplay();
         // UpdateSpeedDisplay();
     }
 
-    /* Guardamos esta lógica para cuando sumemos coleccionables
+    /*
     private void UpdateScoreDisplay()
     {
         _scoreText.text = GameManager.Instance.CurrentScore.ToString("0");
@@ -48,7 +47,6 @@ public class HUDController : MonoBehaviour
     }
     */
 
-    // Esta función está perfecta, la dejamos tal cual para usarla en breve
     public void UpdateHealthBar(float currentHealth, float maxHealth)
     {
         if (_healthSlider != null)
