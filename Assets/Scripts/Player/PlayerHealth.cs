@@ -48,6 +48,7 @@ public class PlayerHealth : MonoBehaviour
         else
         { 
             audioSource.PlayOneShot(damageSound);
+            anim.SetTrigger("Hit");
         }
 
     }
