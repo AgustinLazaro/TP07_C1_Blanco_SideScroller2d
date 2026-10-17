@@ -12,12 +12,17 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private AudioClip gameOverSound;
 
     private HUDController hud;
+    private Animator anim;
+    private PlayerMovement playerMovement;
 
     private void Start()
     {
         currentHealth = maxHealth;
         hud = FindFirstObjectByType<HUDController>();
         hud.UpdateHealthBar(currentHealth, maxHealth);
+        anim = GetComponent<Animator>();
+        playerMovement = GetComponent<PlayerMovement>();
+
     }
 
     private void Update()
