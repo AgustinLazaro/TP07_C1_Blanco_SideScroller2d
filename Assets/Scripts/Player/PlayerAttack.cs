@@ -5,4 +5,16 @@ public class PlayerAttack : MonoBehaviour
     [Header("Attack Settings")]
     [SerializeField] private GameObject projectilePrefab;
     [SerializeField] private Transform firePoint;
+
+    private void Update()
+    {
+        if (Input.GetButtonDown("Fire1"))
+        {
+            Attack();
+        }
+    }
+    private void Attack()
+    {
+        Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
+    }
 }
