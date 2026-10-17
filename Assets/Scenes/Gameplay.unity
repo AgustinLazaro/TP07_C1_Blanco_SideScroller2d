@@ -445,10 +445,18 @@ PrefabInstance:
       propertyPath: audioSource
       value: 
       objectReference: {fileID: 619505111}
+    - target: {fileID: 101347358881612171, guid: 860e6b4e90238914e832d7a6a99cec27, type: 3}
+      propertyPath: gameOverSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 58af06cb855aacd40ba1d8fd2308ddca, type: 3}
     - target: {fileID: 1846311877249759908, guid: 860e6b4e90238914e832d7a6a99cec27, type: 3}
       propertyPath: sfxSource
       value: 
       objectReference: {fileID: 619505111}
+    - target: {fileID: 1846311877249759908, guid: 860e6b4e90238914e832d7a6a99cec27, type: 3}
+      propertyPath: landingSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 6bdca8c50b928314399c7a57d30ba330, type: 3}
     - target: {fileID: 3281236433551494393, guid: 860e6b4e90238914e832d7a6a99cec27, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
