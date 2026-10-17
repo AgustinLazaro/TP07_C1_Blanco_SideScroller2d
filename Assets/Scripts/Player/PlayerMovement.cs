@@ -22,6 +22,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private LayerMask groundLayer;
     private bool isGrounded;
     private bool RequestedJump;
+    private bool wasGrounded;
 
     [Header("Crouch Settings")]
     private bool isCrouching;
@@ -33,6 +34,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private AudioSource stepsSource;
     [SerializeField] private AudioClip jumpSound;
     [SerializeField] private AudioClip stepSound;
+    [SerializeField] private AudioClip landingSound; 
     #endregion
 
     #region Unity Lifecycle
@@ -40,7 +42,7 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        col= GetComponent<CapsuleCollider2D>();
+        col = GetComponent<CapsuleCollider2D>();
         anim = GetComponent<Animator>();
         standSize = col.size;
         standOffset = col.offset;
@@ -130,7 +132,13 @@ public class PlayerMovement : MonoBehaviour
     #region Physics Methods
     private void CheckGrounded()
     {
+        wasGrounded = isGrounded; 
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, groundLayer);
+
+        if (isGrounded && !wasGrounded)
+        { 
+            sfxSource.PlayOneShot(landingSound);
+        }
     }
 
     private void HandleMovementAndCrouching()
