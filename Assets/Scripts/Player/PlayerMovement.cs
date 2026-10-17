@@ -29,7 +29,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 standOffset;
 
     [Header("Audio Settings")]
-    [SerializeField] private AudioSource sfxSource; 
+    [SerializeField] private AudioSource sfxSource;
     [SerializeField] private AudioSource stepsSource;
     [SerializeField] private AudioClip jumpSound;
     [SerializeField] private AudioClip stepSound;
@@ -40,34 +40,101 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        col = GetComponent<CapsuleCollider2D>();
+        col= GetComponent<CapsuleCollider2D>();
         anim = GetComponent<Animator>();
         standSize = col.size;
         standOffset = col.offset;
+
+        stepsSource.clip = stepSound;
     }
 
     void Update()
     {
-        xInput = Input.GetAxisRaw("Horizontal");
+        HandleInput();
+        HandleJumpRequest();
+        HandleSpriteFlip();
+        HandleFootstepAudio();
+        UpdateAnimations();
+    }
 
+    private void FixedUpdate()
+    {
+        CheckGrounded();
+        HandleMovementAndCrouching();
+        ExecuteJump();
+    }
+    #endregion
+
+    #region Input & Logic Methods
+    private void HandleInput()
+    {
+        xInput = Input.GetAxisRaw("Horizontal");
+        isCrouching = Input.GetKey(KeyCode.LeftControl) && isGrounded;
+    }
+
+    private void HandleJumpRequest()
+    {
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
             RequestedJump = true;
+            sfxSource.PlayOneShot(jumpSound);
         }
-        if (xInput != 0) spriteRenderer.flipX = xInput < 0;
+    }
 
-        isCrouching = Input.GetKey(KeyCode.LeftControl) && isGrounded;
+    private void HandleSpriteFlip()
+    {
+        if (xInput != 0)
+        {
+            spriteRenderer.flipX = xInput < 0;
+        }
+    }
 
+    private void HandleFootstepAudio()
+    {
+        bool isMoving = xInput != 0 && isGrounded;
+
+        if (isMoving)
+        {
+            if (!stepsSource.isPlaying)
+            {
+                stepsSource.Play();
+            }
+
+            if (isCrouching)
+            {
+                stepsSource.pitch = 1.0f;
+            }
+            else
+            {
+                stepsSource.pitch = 1.3f;
+            }
+        }
+        else
+        {
+            if (stepsSource.isPlaying)
+            {
+                stepsSource.Stop();
+            }
+        }
+    }
+
+    private void UpdateAnimations()
+    {
         anim.SetFloat("Speed", Mathf.Abs(xInput));
         anim.SetBool("IsCrouching", isCrouching);
         anim.SetBool("IsGrounded", isGrounded);
         anim.SetFloat("yVelocity", rb.linearVelocity.y);
     }
+    #endregion
 
-    private void FixedUpdate()
+    #region Physics Methods
+    private void CheckGrounded()
     {
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, groundLayer);
+    }
 
+    private void HandleMovementAndCrouching()
+    {
         float currentSpeed = moveSpeed;
         col.size = standSize;
         col.offset = standOffset;
@@ -80,7 +147,10 @@ public class PlayerMovement : MonoBehaviour
         }
 
         rb.linearVelocity = new Vector2(xInput * currentSpeed, rb.linearVelocity.y);
+    }
 
+    private void ExecuteJump()
+    {
         if (RequestedJump)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
