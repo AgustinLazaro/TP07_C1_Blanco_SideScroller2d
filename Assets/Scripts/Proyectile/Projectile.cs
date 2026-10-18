@@ -12,6 +12,7 @@ public class Projectile : MonoBehaviour
     [Header("Projectile Settings")]
     [SerializeField] private float speed = 10f;
     [SerializeField] private float lifeTime = 3f;
+    [SerializeField] private float damage = 25f;
 
     [Header("Audio Settings")]
     [SerializeField] private AudioClip slashSound;
@@ -39,6 +40,14 @@ public class Projectile : MonoBehaviour
         rb.linearVelocity = new Vector2(speed * direction, 0f);
 
         Destroy(gameObject, lifeTime);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        EnemyHealth enemy = collision.GetComponent<EnemyHealth>();
+
+        enemy.TakeDamage(damage);
+        Destroy(gameObject);
     }
     #endregion
 }
