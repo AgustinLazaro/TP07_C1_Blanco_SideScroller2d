@@ -4,15 +4,15 @@ public class PlayerAttack : MonoBehaviour
 {
     [SerializeField] private GameObject projectilePrefab;
     [SerializeField] private Transform firePoint;
-    [SerializeField] private AudioClip slashSound;
+    
 
     private Animator anim;
-    private AudioSource audioSource;
+    
 
     private void Awake()
     {
         anim = GetComponent<Animator>();
-        audioSource = GetComponent<AudioSource>();
+        
     }
 
     private void Update()
@@ -27,7 +27,6 @@ public class PlayerAttack : MonoBehaviour
     private void Attack()
     {
         anim.SetTrigger("isAttacking");
-        audioSource.PlayOneShot(slashSound);
 
         GameObject projectile = Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
 
