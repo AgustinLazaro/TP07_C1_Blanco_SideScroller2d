@@ -12,4 +12,15 @@ public class EnemyHealth : MonoBehaviour
     {
         currentHealth = maxHealth;
     }
+
+    public void TakeDamage(float damageAmount)
+    {
+        currentHealth -= damageAmount;
+        Debug.Log("Vida enemy: " + currentHealth);
+
+        if (currentHealth <= 0)
+        {
+            Destroy(gameObject);
+        }
+    }
 }
