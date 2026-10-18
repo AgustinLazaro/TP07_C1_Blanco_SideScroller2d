@@ -22,7 +22,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private LayerMask groundLayer;
 
     public bool IsGrounded { get; private set; }
-    private bool RequestedJump;
+    private bool requestedJump;
     private bool wasGrounded;
 
     [Header("Crouch Settings")]
@@ -79,7 +79,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Input.GetButtonDown("Jump") && IsGrounded)
         {
-            RequestedJump = true;
+            requestedJump = true;
             sfxSource.PlayOneShot(jumpSound);
         }
     }
@@ -171,10 +171,10 @@ public class PlayerMovement : MonoBehaviour
 
     private void ExecuteJump()
     {
-        if (RequestedJump)
+        if (requestedJump)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
-            RequestedJump = false;
+            requestedJump = false;
         }
     }
     #endregion

@@ -1,30 +1,42 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(PlayerMovement))]
 public class PlayerAttack : MonoBehaviour
 {
-    [SerializeField] private GameObject projectilePrefab;
-    [SerializeField] private Transform firePoint;
-
+    #region Variables
+    [Header("Components")]
     private Animator anim;
     private PlayerMovement playerMovement;
 
+    [Header("Attack Settings")]
+    [SerializeField] private GameObject projectilePrefab;
+    [SerializeField] private Transform firePoint;
+    #endregion
 
+    #region Unity Lifecycle
     private void Awake()
     {
         anim = GetComponent<Animator>();
         playerMovement = GetComponent<PlayerMovement>();
-
     }
 
     private void Update()
     {
+        HandleAttackInput();
+    }
+    #endregion
+
+    #region Input & Logic Methods
+    private void HandleAttackInput()
+    {
         if (Input.GetMouseButtonDown(0) && playerMovement.IsGrounded)
         {
-            Attack();
+            ExecuteAttack();
         }
     }
 
-    private void Attack()
+    private void ExecuteAttack()
     {
         if (playerMovement.IsCrouching)
         {
@@ -44,4 +56,5 @@ public class PlayerAttack : MonoBehaviour
             projectile.transform.localScale = projectileScale;
         }
     }
+    #endregion
 }
