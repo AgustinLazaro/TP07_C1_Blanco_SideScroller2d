@@ -26,7 +26,7 @@ public class PlayerMovement : MonoBehaviour
     private bool wasGrounded;
 
     [Header("Crouch Settings")]
-    private bool isCrouching;
+    public bool IsCrouching { get; private set; }
     private Vector2 standSize;
     private Vector2 standOffset;
 
@@ -72,9 +72,9 @@ public class PlayerMovement : MonoBehaviour
     private void HandleInput()
     {
         xInput = Input.GetAxisRaw("Horizontal");
-        isCrouching = Input.GetKey(KeyCode.LeftControl) && IsGrounded;
+        IsCrouching = Input.GetKey(KeyCode.LeftControl) && IsGrounded;
     }
-
+        
     private void HandleJumpRequest()
     {
         if (Input.GetButtonDown("Jump") && IsGrounded)
@@ -114,7 +114,7 @@ public class PlayerMovement : MonoBehaviour
                 stepsSource.Play();
             }
 
-            if (isCrouching)
+            if (IsCrouching)
             {
                 stepsSource.pitch = 1.0f;
             }
@@ -135,7 +135,7 @@ public class PlayerMovement : MonoBehaviour
     private void UpdateAnimations()
     {
         anim.SetFloat("Speed", Mathf.Abs(xInput));
-        anim.SetBool("IsCrouching", isCrouching);
+        anim.SetBool("IsCrouching", IsCrouching);
         anim.SetBool("IsGrounded", IsGrounded);
         anim.SetFloat("yVelocity", rb.linearVelocity.y);
     }
@@ -159,7 +159,7 @@ public class PlayerMovement : MonoBehaviour
         col.size = standSize;
         col.offset = standOffset;
 
-        if (isCrouching)
+        if (IsCrouching)
         {
             currentSpeed = moveSpeed * 0.5f;
             col.size = new Vector2(standSize.x, standSize.y / 2f);

@@ -4,7 +4,6 @@ public class PlayerAttack : MonoBehaviour
 {
     [SerializeField] private GameObject projectilePrefab;
     [SerializeField] private Transform firePoint;
-    
 
     private Animator anim;
     private PlayerMovement playerMovement;
@@ -27,7 +26,14 @@ public class PlayerAttack : MonoBehaviour
 
     private void Attack()
     {
-        anim.SetTrigger("isAttacking");
+        if (playerMovement.IsCrouching)
+        {
+            anim.SetTrigger("isCrouchAttacking");
+        }
+        else
+        {
+            anim.SetTrigger("isAttacking");
+        }
 
         GameObject projectile = Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
 

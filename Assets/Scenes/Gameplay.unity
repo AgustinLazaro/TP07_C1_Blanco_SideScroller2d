@@ -480,6 +480,10 @@ PrefabInstance:
       propertyPath: slashSound
       value: 
       objectReference: {fileID: 8300000, guid: 0efbd0047b497bf43ba7f6bdfb9479fc, type: 3}
+    - target: {fileID: 3731430186346617029, guid: 860e6b4e90238914e832d7a6a99cec27, type: 3}
+      propertyPath: crouchFirePoint
+      value: 
+      objectReference: {fileID: 1504985422}
     - target: {fileID: 5168532613652669189, guid: 860e6b4e90238914e832d7a6a99cec27, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.2
@@ -631,6 +635,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &1504985422 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5168532613652669189, guid: 860e6b4e90238914e832d7a6a99cec27, type: 3}
+  m_PrefabInstance: {fileID: 1109127162}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1738391574
 GameObject:
   m_ObjectHideFlags: 0
