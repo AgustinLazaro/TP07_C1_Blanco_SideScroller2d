@@ -349,25 +349,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &980341808 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5470866626190928444, guid: 9773bb54d27e32e4d8e142c36429a56d, type: 3}
-  m_PrefabInstance: {fileID: 288844699145835766}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &980341813
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 980341808}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 63dce0dbc859f534faccfbc96e19aa3e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
-  maxHealth: 50
-  currentHealth: 0
 --- !u!1 &1037191073
 GameObject:
   m_ObjectHideFlags: 0
@@ -776,28 +757,20 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy
       objectReference: {fileID: 0}
-    - target: {fileID: 6636096594003832682, guid: 9773bb54d27e32e4d8e142c36429a56d, type: 3}
+    - target: {fileID: 6708932202852617310, guid: 9773bb54d27e32e4d8e142c36429a56d, type: 3}
       propertyPath: m_Size.x
-      value: 1.4906001
+      value: 2.1875
       objectReference: {fileID: 0}
-    - target: {fileID: 6636096594003832682, guid: 9773bb54d27e32e4d8e142c36429a56d, type: 3}
-      propertyPath: m_Offset.x
-      value: 0.24530005
+    - target: {fileID: 6708932202852617310, guid: 9773bb54d27e32e4d8e142c36429a56d, type: 3}
+      propertyPath: m_Size.y
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6708932202852617310, guid: 9773bb54d27e32e4d8e142c36429a56d, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -2414949640370147915, guid: 8ef85ced7f1655049a325c9c5f9ec4be, type: 3}
+      objectReference: {fileID: -2414949640370147915, guid: 193be0694454b92488b0ce7e66a72486, type: 3}
     - target: {fileID: 6708932202852617310, guid: 9773bb54d27e32e4d8e142c36429a56d, type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6708932202852617310, guid: 9773bb54d27e32e4d8e142c36429a56d, type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6708932202852617310, guid: 9773bb54d27e32e4d8e142c36429a56d, type: 3}
-      propertyPath: m_Color.r
+      propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9134678932639952157, guid: 9773bb54d27e32e4d8e142c36429a56d, type: 3}
@@ -843,10 +816,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5470866626190928444, guid: 9773bb54d27e32e4d8e142c36429a56d, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 980341813}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9773bb54d27e32e4d8e142c36429a56d, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
