@@ -15,6 +15,12 @@ public class PlayerAttack : MonoBehaviour
     }
     private void Attack()
     {
-        Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
+        GameObject projectile = Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
+        if (transform.localScale.x < 0)
+        {
+            Vector3 projectileScale = projectile.transform.localScale;
+            projectileScale.x = projectileScale.x * -1;
+            projectile.transform.localScale = projectileScale;
+        }
     }
 }
