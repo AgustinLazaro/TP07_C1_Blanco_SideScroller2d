@@ -20,7 +20,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Transform groundCheck;
     [SerializeField] private float checkRadius = 0.2f;
     [SerializeField] private LayerMask groundLayer;
-    private bool isGrounded;
+
+    public bool IsGrounded { get; private set; }
     private bool RequestedJump;
     private bool wasGrounded;
 
@@ -71,12 +72,12 @@ public class PlayerMovement : MonoBehaviour
     private void HandleInput()
     {
         xInput = Input.GetAxisRaw("Horizontal");
-        isCrouching = Input.GetKey(KeyCode.LeftControl) && isGrounded;
+        isCrouching = Input.GetKey(KeyCode.LeftControl) && IsGrounded;
     }
 
     private void HandleJumpRequest()
     {
-        if (Input.GetButtonDown("Jump") && isGrounded)
+        if (Input.GetButtonDown("Jump") && IsGrounded)
         {
             RequestedJump = true;
             sfxSource.PlayOneShot(jumpSound);
@@ -104,7 +105,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void HandleFootstepAudio()
     {
-        bool isMoving = xInput != 0 && isGrounded;
+        bool isMoving = xInput != 0 && IsGrounded;
 
         if (isMoving)
         {
@@ -135,7 +136,7 @@ public class PlayerMovement : MonoBehaviour
     {
         anim.SetFloat("Speed", Mathf.Abs(xInput));
         anim.SetBool("IsCrouching", isCrouching);
-        anim.SetBool("IsGrounded", isGrounded);
+        anim.SetBool("IsGrounded", IsGrounded);
         anim.SetFloat("yVelocity", rb.linearVelocity.y);
     }
     #endregion
@@ -143,10 +144,10 @@ public class PlayerMovement : MonoBehaviour
     #region Physics Methods
     private void CheckGrounded()
     {
-        wasGrounded = isGrounded; 
-        isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, groundLayer);
+        wasGrounded = IsGrounded; 
+        IsGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, groundLayer);
 
-        if (isGrounded && !wasGrounded)
+        if (IsGrounded && !wasGrounded)
         { 
             sfxSource.PlayOneShot(landingSound);
         }

@@ -7,20 +7,21 @@ public class PlayerAttack : MonoBehaviour
     
 
     private Animator anim;
-    
+    private PlayerMovement playerMovement;
+
 
     private void Awake()
     {
         anim = GetComponent<Animator>();
-        
+        playerMovement = GetComponent<PlayerMovement>();
+
     }
 
     private void Update()
     {
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetMouseButtonDown(0) && playerMovement.IsGrounded)
         {
             Attack();
-           
         }
     }
 

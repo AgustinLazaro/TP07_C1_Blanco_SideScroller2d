@@ -6,7 +6,6 @@ public class Projectile : MonoBehaviour
     [Header("Proyectile Settings")]
     [SerializeField] private float speed = 10f;
     [SerializeField] private float lifeTime = 3f;
-
     [SerializeField] private AudioClip slashSound;
 
     private Rigidbody2D rb;
