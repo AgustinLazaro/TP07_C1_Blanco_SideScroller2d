@@ -1,0 +1,46 @@
+# TP07 - 2D Side Scroller (v07.1)
+
+## Project Requirements
+
+### 1. Conventions & Structure
+- [x] **Repository & Project:** Naming follows format (`TP07_C1_Blanco_SideScroller2d`).
+- [x] **Scene Management:** Two distinct scenes created: Main Menu and Gameplay with working transitions.
+- [x] **Architecture:** Decoupling via ScriptableObjects for configuration and component-based MonoBehaviours for state.
+
+### 2. Player Mechanics
+- [x] **Horizontal Movement:** Player moves smoothly left and right with crouch support.
+- [x] **Jump Mechanics:** Ground detection and jumping physics.
+- [x] **Ranged Attack:** Spawns projectile with direction flipping and fire point positioning.
+- [x] **Player Animations:** Complete 2D state machine (Idle, Run, Jump, Crouch, Attack, Hit, Die).
+- [ ] **Player Health & Game Over Flow:**
+  - [ ] Player takes damage from enemy attacks or hazardous obstacles.
+  - [ ] Defeat flow: death animation, game over audio feedback, and UI defeat screen with level reload / restart action.
+
+### 3. Enemies & Combat
+- [x] **Health System:** Enemies have configurable health (>2 shots required to eliminate; 3 hits).
+- [x] **Hit & Elimination Feedback:** Sound cues on hit/death and trigger animations.
+- [x] **Particle System:** Mandatory `ParticleSystem` instantiation upon enemy destruction (`deathEffectPrefab`).
+- [ ] **Canvas World Space:**
+  - [ ] World Space Canvas anchored above the enemy.
+  - [ ] Health bar UI slider visualizing current enemy health in real time.
+- [ ] **Enemy AI / Behavior:** Basic movement, player detection, or contact/attack damage delivery.
+
+### 4. Pickables & Power-Ups
+- [ ] **Collectibles / Pickables:** Interactive pickable items (e.g., health restoration, stamina, or score tokens).
+- [ ] **Power-Ups:** Subtly modifies gameplay mechanics upon collection (e.g., speed boost, projectile buff, or jump enhancement).
+- [ ] **Pickup Feedback:** Audio cue played immediately on collection.
+
+### 5. Data & Configuration (ScriptableObjects)
+- [x] **PlayerDataSO:** Movement, jump force, crouch speed, max health, and projectile prefab reference.
+- [x] **ProjectileDataSO:** Speed, lifetime, and attack damage.
+- [x] **EnemyDataSO:** Max health and combat base values.
+
+### 6. Audio & Mixer
+- [x] **AudioMixer Routing:** Mixer configuration connected with volume settings exposed to the options menu.
+- [x] **Sound Effects (SFX):**
+  - [x] Jump, footstep, and landing sounds.
+  - [x] Projectile firing (slash sound).
+  - [x] Enemy hit and death audio.
+  - [ ] Player defeat sound ("Al perder").
+  - [ ] Collectible pickup sound ("Agarrar Coleccionable").
+- [x] **Gameplay Music (BGM):** Continuous background music track in the gameplay scene.
