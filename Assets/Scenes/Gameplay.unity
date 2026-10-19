@@ -748,8 +748,65 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8182602811669089675, guid: edc40cc89f831aa498ed6750e0de1df7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1931554832}
   m_SourcePrefab: {fileID: 100100000, guid: edc40cc89f831aa498ed6750e0de1df7, type: 3}
+--- !u!1 &1931554831 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8182602811669089675, guid: edc40cc89f831aa498ed6750e0de1df7, type: 3}
+  m_PrefabInstance: {fileID: 1931554830}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1931554832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1931554831}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 813bcb560b01a3b41982a3153361f31f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SettingsAudioUI
+  _audioMixer: {fileID: 24100000, guid: fe826fd46d2e2514e8ac49ec2047c944, type: 2}
+  _masterSlider: {fileID: 1931554835}
+  _musicSlider: {fileID: 1931554834}
+  _sfxSlider: {fileID: 1931554833}
+--- !u!114 &1931554833 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 645211094299903945, guid: edc40cc89f831aa498ed6750e0de1df7, type: 3}
+  m_PrefabInstance: {fileID: 1931554830}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Slider
+--- !u!114 &1931554834 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6276104271362686226, guid: edc40cc89f831aa498ed6750e0de1df7, type: 3}
+  m_PrefabInstance: {fileID: 1931554830}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Slider
+--- !u!114 &1931554835 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 171592196345622198, guid: edc40cc89f831aa498ed6750e0de1df7, type: 3}
+  m_PrefabInstance: {fileID: 1931554830}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Slider
 --- !u!1001 &288844699145835766
 PrefabInstance:
   m_ObjectHideFlags: 0
