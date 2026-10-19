@@ -6,16 +6,19 @@ public class EnemyHealth : MonoBehaviour
     [Header("Components")]
     private Animator anim;
 
+    [Header("Audio Settings")]
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip damageSound;
+
     [Header("Health Settings")]
     [SerializeField] private float maxHealth = 50f;
     [SerializeField] private float currentHealth;
     #endregion
 
-    private bool isDead;
-
     private void Awake()
     {
         anim = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void Start()
@@ -28,6 +31,7 @@ public class EnemyHealth : MonoBehaviour
         currentHealth -= damageAmount;
         Debug.Log("Vida enemy: " + currentHealth);
         anim.SetTrigger("Hit");
+        audioSource.PlayOneShot(damageSound);
 
         if (currentHealth <= 0)
         {
