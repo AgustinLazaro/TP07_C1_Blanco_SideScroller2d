@@ -8,10 +8,11 @@ public class PlayerHealth : MonoBehaviour
     [Header("Components")]
     private HUDController hud;
     private Animator anim;
-    private PlayerMovement playerMovement;
+
+    [Header("Data Configuration")]
+    [SerializeField] private PlayerDataSO data;
 
     [Header("Health Settings")]
-    [SerializeField] private float maxHealth = 100f;
     [SerializeField] private float currentHealth;
 
     [Header("Audio Settings")]
@@ -24,14 +25,13 @@ public class PlayerHealth : MonoBehaviour
     private void Awake()
     {
         anim = GetComponent<Animator>();
-        playerMovement = GetComponent<PlayerMovement>();
     }
 
     private void Start()
     {
-        currentHealth = maxHealth;
+        currentHealth = data.maxHealth;
         hud = FindFirstObjectByType<HUDController>();
-        hud.UpdateHealthBar(currentHealth, maxHealth);
+        hud.UpdateHealthBar(currentHealth, data.maxHealth);
     }
 
     private void Update()
@@ -43,7 +43,6 @@ public class PlayerHealth : MonoBehaviour
     #region Input & Logic Methods
     private void HandleDebugInput()
     {
-        
         if (Input.GetKeyDown(KeyCode.T))
         {
             TakeDamage(20f);
@@ -53,7 +52,7 @@ public class PlayerHealth : MonoBehaviour
     private void TakeDamage(float damageAmount)
     {
         currentHealth -= damageAmount;
-        hud.UpdateHealthBar(currentHealth, maxHealth);
+        hud.UpdateHealthBar(currentHealth, data.maxHealth);
 
         if (currentHealth <= 0)
         {

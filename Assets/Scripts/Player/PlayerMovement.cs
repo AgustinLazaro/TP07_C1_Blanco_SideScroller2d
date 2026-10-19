@@ -7,16 +7,16 @@ public class PlayerMovement : MonoBehaviour
     #region Variables
     [Header("Components")]
     private Rigidbody2D rb;
-    private SpriteRenderer spriteRenderer;
     private CapsuleCollider2D col;
     private Animator anim;
 
-    [Header("Movement Settings")]
-    [SerializeField] private float moveSpeed = 9f;
+    [Header("Data Configuration")]
+    [SerializeField] private PlayerDataSO data;
+
+    [Header("Movement Input")]
     private float xInput;
 
     [Header("Jump & Ground Settings")]
-    [SerializeField] private float jumpForce = 12f;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private float checkRadius = 0.2f;
     [SerializeField] private LayerMask groundLayer;
@@ -35,14 +35,13 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private AudioSource stepsSource;
     [SerializeField] private AudioClip jumpSound;
     [SerializeField] private AudioClip stepSound;
-    [SerializeField] private AudioClip landingSound; 
+    [SerializeField] private AudioClip landingSound;
     #endregion
 
     #region Unity Lifecycle
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
         col = GetComponent<CapsuleCollider2D>();
         anim = GetComponent<Animator>();
         standSize = col.size;
@@ -74,7 +73,7 @@ public class PlayerMovement : MonoBehaviour
         xInput = Input.GetAxisRaw("Horizontal");
         IsCrouching = Input.GetKey(KeyCode.LeftControl) && IsGrounded;
     }
-        
+
     private void HandleJumpRequest()
     {
         if (Input.GetButtonDown("Jump") && IsGrounded)
@@ -88,17 +87,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (xInput != 0)
         {
-            float facingDirection;
-
-            if (xInput > 0)
-            {
-                facingDirection = 1f;
-            }
-            else
-            {
-                facingDirection = -1f;
-            }
-
+            float facingDirection = xInput > 0 ? 1f : -1f;
             transform.localScale = new Vector3(facingDirection, 1f, 1f);
         }
     }
@@ -114,14 +103,7 @@ public class PlayerMovement : MonoBehaviour
                 stepsSource.Play();
             }
 
-            if (IsCrouching)
-            {
-                stepsSource.pitch = 1.0f;
-            }
-            else
-            {
-                stepsSource.pitch = 1.3f;
-            }
+            stepsSource.pitch = IsCrouching ? 1.0f : 1.3f;
         }
         else
         {
@@ -144,24 +126,24 @@ public class PlayerMovement : MonoBehaviour
     #region Physics Methods
     private void CheckGrounded()
     {
-        wasGrounded = IsGrounded; 
+        wasGrounded = IsGrounded;
         IsGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, groundLayer);
 
         if (IsGrounded && !wasGrounded)
-        { 
+        {
             sfxSource.PlayOneShot(landingSound);
         }
     }
 
     private void HandleMovementAndCrouching()
     {
-        float currentSpeed = moveSpeed;
+        float currentSpeed = data.moveSpeed;
         col.size = standSize;
         col.offset = standOffset;
 
         if (IsCrouching)
         {
-            currentSpeed = moveSpeed * 0.5f;
+            currentSpeed = data.moveSpeed * data.crouchSpeed;
             col.size = new Vector2(standSize.x, standSize.y / 2f);
             col.offset = new Vector2(standOffset.x, standOffset.y - (standSize.y / 4f));
         }
@@ -173,7 +155,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (requestedJump)
         {
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, data.jumpForce);
             requestedJump = false;
         }
     }
