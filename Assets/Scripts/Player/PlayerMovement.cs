@@ -155,7 +155,9 @@ public class PlayerMovement : MonoBehaviour
     {
         if (requestedJump)
         {
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, data.jumpForce);
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, Vector2.zero.y);
+            rb.AddForce(Vector2.up * data.jumpForce, ForceMode2D.Impulse);
+
             requestedJump = false;
         }
     }
