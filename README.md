@@ -16,10 +16,10 @@ Estado del proyecto: Actualizado al 19/10/2026 - 18:00 hs.
 Juego de plataformas y acción de desplazamiento lateral (2D Side Scroller). El jugador se desplaza a través del escenario interactuando con físicas 2D, eliminando enemigos mediante proyectiles a distancia y gestionando la configuración de audio desde el menú.
 
 ### Cómo jugar
-- **Moverse a los lados:** Teclas `A` / `D` o `Flechas izquierda` / `Flecha derecha`.
+- **Moverse a los lados:** Teclas `A` / `D`.
 - **Agacharse:** Tecla `Control Izquierdo`.
 - **Saltar:** Tecla `Espacio`.
-- **Disparar:** Tecla `J` o `Clic izquierdo`.
+- **Disparar:** `Clic izquierdo`.
 - **Recibir daño (Debug / Test):** Tecla `T` (aplica daño al jugador para probar animaciones y feedback de impacto).
 - **Pausa / Opciones:** Tecla `Escape`.
 
@@ -42,10 +42,10 @@ Project status: Updated as of 19/10/2026 - 18:00 hs.
 A 2D Side Scroller action-platformer game. The player navigates through the environment using 2D physics, takes down enemies using ranged projectiles, and customizes audio settings through the options menu.
 
 ### How to play
-- **Move Left / Right:** `A` / `D` keys or `Left` / `Right` arrow keys.
+- **Move Left / Right:** `A` / `D` keys.
 - **Crouch:** `Left Control` key.
 - **Jump:** `Space` key.
-- **Shoot:** `J` key or `Left Mouse Button`.
+- **Shoot:** `Left Mouse Button`.
 - **Take Damage (Debug / Test):** `T` key (applies damage to test impact animation and hit reaction).
 - **Pause / Settings:** `Escape` key.
 
