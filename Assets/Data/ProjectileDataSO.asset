@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: ProjectileDataSO
   m_EditorClassIdentifier: Assembly-CSharp::ProjectileDataSO
   speed: 10
-  lifeTime: 3
+  lifeTime: 1
   damage: 25
