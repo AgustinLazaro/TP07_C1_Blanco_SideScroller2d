@@ -5,20 +5,24 @@ public class EnemyHealth : MonoBehaviour
     #region Variables
     [Header("Components")]
     private Animator anim;
+    private Collider2D col;
 
     [Header("Audio Settings")]
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip damageSound;
+    [SerializeField] private AudioClip deathSound;
 
     [Header("Health Settings")]
     [SerializeField] private float maxHealth = 50f;
     [SerializeField] private float currentHealth;
     #endregion
 
+
     private void Awake()
     {
         anim = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
+        col = GetComponent<Collider2D>();
     }
 
     private void Start()
@@ -30,12 +34,19 @@ public class EnemyHealth : MonoBehaviour
     {
         currentHealth -= damageAmount;
         Debug.Log("Vida enemy: " + currentHealth);
-        anim.SetTrigger("Hit");
-        audioSource.PlayOneShot(damageSound);
 
-        if (currentHealth <= 0)
+        if (currentHealth > 0)
         {
-            Destroy(gameObject, 0.2f);
+            anim.SetTrigger("Hit");
+            audioSource.PlayOneShot(damageSound);
+        }
+        else
+        {
+            col.enabled = false;
+
+            anim.SetTrigger("Hit");
+            audioSource.PlayOneShot(deathSound);
+            Destroy(gameObject, deathSound.length);
         }
     }
 }
