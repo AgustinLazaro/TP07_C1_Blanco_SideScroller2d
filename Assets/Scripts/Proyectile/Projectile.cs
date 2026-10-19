@@ -9,10 +9,8 @@ public class Projectile : MonoBehaviour
     private Rigidbody2D rb;
     private AudioSource audioSource;
 
-    [Header("Projectile Settings")]
-    [SerializeField] private float speed = 10f;
-    [SerializeField] private float lifeTime = 3f;
-    [SerializeField] private float damage = 25f;
+    [Header("Data Configuration")]
+    [SerializeField] private ProjectileDataSO data;
 
     [Header("Audio Settings")]
     [SerializeField] private AudioClip slashSound;
@@ -37,17 +35,20 @@ public class Projectile : MonoBehaviour
         audioSource.PlayOneShot(slashSound);
 
         float direction = Mathf.Sign(transform.localScale.x);
-        rb.linearVelocity = new Vector2(speed * direction, 0f);
+        rb.linearVelocity = new Vector2(data.speed * direction, 0f);
 
-        Destroy(gameObject, lifeTime);
+        Destroy(gameObject, data.lifeTime);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         EnemyHealth enemy = collision.GetComponent<EnemyHealth>();
-        enemy.TakeDamage(damage);
 
-        Destroy(gameObject);
+        if (enemy != null)
+        {
+            enemy.TakeDamage(data.damage);
+            Destroy(gameObject);
+        }
     }
     #endregion
 }

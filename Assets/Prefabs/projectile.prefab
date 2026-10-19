@@ -200,9 +200,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e648a783e42bcc8428858aa22f00abad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Projectile
-  speed: 10
-  lifeTime: 3
-  damage: 25
+  data: {fileID: 11400000, guid: 08d0d0a1f9bc1634b9edcee847fceaf7, type: 2}
   slashSound: {fileID: 8300000, guid: 0efbd0047b497bf43ba7f6bdfb9479fc, type: 3}
 --- !u!212 &4542695203990942005
 SpriteRenderer:
