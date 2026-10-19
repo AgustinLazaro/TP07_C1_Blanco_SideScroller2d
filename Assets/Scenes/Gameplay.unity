@@ -757,29 +757,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy
       objectReference: {fileID: 0}
-    - target: {fileID: 6708932202852617310, guid: 9773bb54d27e32e4d8e142c36429a56d, type: 3}
-      propertyPath: m_Size.x
-      value: 2.1875
-      objectReference: {fileID: 0}
-    - target: {fileID: 6708932202852617310, guid: 9773bb54d27e32e4d8e142c36429a56d, type: 3}
-      propertyPath: m_Size.y
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6708932202852617310, guid: 9773bb54d27e32e4d8e142c36429a56d, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: -2414949640370147915, guid: 193be0694454b92488b0ce7e66a72486, type: 3}
-    - target: {fileID: 6708932202852617310, guid: 9773bb54d27e32e4d8e142c36429a56d, type: 3}
-      propertyPath: m_WasSpriteAssigned
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 9134678932639952157, guid: 9773bb54d27e32e4d8e142c36429a56d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 6.13
       objectReference: {fileID: 0}
     - target: {fileID: 9134678932639952157, guid: 9773bb54d27e32e4d8e142c36429a56d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.03
+      value: -2.045
       objectReference: {fileID: 0}
     - target: {fileID: 9134678932639952157, guid: 9773bb54d27e32e4d8e142c36429a56d, type: 3}
       propertyPath: m_LocalPosition.z
