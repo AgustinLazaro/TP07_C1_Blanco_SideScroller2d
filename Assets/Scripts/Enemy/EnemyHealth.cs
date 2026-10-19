@@ -7,6 +7,9 @@ public class EnemyHealth : MonoBehaviour
     private Animator anim;
     private Collider2D col;
 
+    [Header("Data Configuration")]
+    [SerializeField] private EnemyDataSO data;
+
     [Header("Effects")]
     [SerializeField] private GameObject deathEffectPrefab;
 
@@ -16,7 +19,6 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] private AudioClip deathSound;
 
     [Header("Health Settings")]
-    [SerializeField] private float maxHealth = 50f;
     [SerializeField] private float currentHealth;
     #endregion
 
@@ -29,7 +31,7 @@ public class EnemyHealth : MonoBehaviour
 
     private void Start()
     {
-        currentHealth = maxHealth;
+        currentHealth = data.maxHealth;
     }
 
     public void TakeDamage(float damageAmount)
