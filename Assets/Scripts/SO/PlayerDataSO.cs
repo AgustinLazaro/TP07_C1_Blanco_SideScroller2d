@@ -10,4 +10,7 @@ public class PlayerDataSO : ScriptableObject
 
     [Header("Health Settings")]
     public float maxHealth = 100f;
+
+    [Header("Attack Settings")]
+    public GameObject projectilePrefab;
 }

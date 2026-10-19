@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerDataSO
   moveSpeed: 9
   jumpForce: 9
-  crouchSpeedMultiplier: 0.5
+  crouchSpeed: 0.5
   maxHealth: 100
+  projectilePrefab: {fileID: 7932222524348236318, guid: 8129459304105834ca294436e05bc7f6, type: 3}

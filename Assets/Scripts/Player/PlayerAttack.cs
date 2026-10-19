@@ -9,8 +9,10 @@ public class PlayerAttack : MonoBehaviour
     private Animator anim;
     private PlayerMovement playerMovement;
 
+    [Header("Data Configuration")]
+    [SerializeField] private PlayerDataSO data;
+
     [Header("Attack Settings")]
-    [SerializeField] private GameObject projectilePrefab;
     [SerializeField] private Transform firePoint;
     #endregion
 
@@ -47,7 +49,7 @@ public class PlayerAttack : MonoBehaviour
             anim.SetTrigger("isAttacking");
         }
 
-        GameObject projectile = Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
+        GameObject projectile = Instantiate(data.projectilePrefab, firePoint.position, firePoint.rotation);
 
         if (transform.localScale.x < 0)
         {
