@@ -762,6 +762,10 @@ PrefabInstance:
       propertyPath: audioSource
       value: 
       objectReference: {fileID: 980341815}
+    - target: {fileID: 3749038390500459554, guid: 9773bb54d27e32e4d8e142c36429a56d, type: 3}
+      propertyPath: deathEffectPrefab
+      value: 
+      objectReference: {fileID: 8617451154130598678, guid: 96efa59aa50175b4e98bfe6396d120d6, type: 3}
     - target: {fileID: 5470866626190928444, guid: 9773bb54d27e32e4d8e142c36429a56d, type: 3}
       propertyPath: m_Name
       value: Enemy

@@ -7,6 +7,9 @@ public class EnemyHealth : MonoBehaviour
     private Animator anim;
     private Collider2D col;
 
+    [Header("Effects")]
+    [SerializeField] private GameObject deathEffectPrefab;
+
     [Header("Audio Settings")]
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip damageSound;
@@ -16,7 +19,6 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] private float maxHealth = 50f;
     [SerializeField] private float currentHealth;
     #endregion
-
 
     private void Awake()
     {
@@ -46,6 +48,8 @@ public class EnemyHealth : MonoBehaviour
 
             anim.SetTrigger("Hit");
             audioSource.PlayOneShot(deathSound);
+            Instantiate(deathEffectPrefab, transform.position, Quaternion.identity);
+
             Destroy(gameObject, deathSound.length);
         }
     }
