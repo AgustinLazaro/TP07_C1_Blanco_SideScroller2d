@@ -5,6 +5,8 @@ using UnityEngine.UI;
 public class HUDController : MonoBehaviour
 {
     [Header("UI References")]
+    // Suggestion: _scoreText, _speedText y _lastDisplayedSpeed no se usan; son restos de otro proyecto junto con el bloque comentado de las lineas 32 a 48
+    // (referencia a un GameManager que no existe en esta entrega). Borra el codigo muerto.
     [SerializeField] private TextMeshProUGUI _scoreText;
     [SerializeField] private TextMeshProUGUI _speedText;
     [SerializeField] private Slider _healthSlider;
@@ -22,6 +24,7 @@ public class HUDController : MonoBehaviour
         // PlayerHealth.OnHealthChanged -= UpdateHealthBar;
     }
 
+    // Suggestion: Update, OnEnable y OnDisable estan vacios (solo tienen codigo comentado). Unity igual los invoca; borralos si no se usan.
     private void Update()
     {
        

@@ -4,6 +4,8 @@ using UnityEngine;
 public class PlayerDataSO : ScriptableObject
 {
     [Header("Movement Settings")]
+    // Warning: todos los campos de este SO son public y mutables (moveSpeed, jumpForce, crouchSpeed, maxHealth, projectilePrefab).
+    // Pasalos a [SerializeField] private y expone properties de solo lectura para que los MonoBehaviours no puedan modificar el asset.
     public float moveSpeed = 9f;
     public float jumpForce = 12f;
     public float crouchSpeed = 0.5f;

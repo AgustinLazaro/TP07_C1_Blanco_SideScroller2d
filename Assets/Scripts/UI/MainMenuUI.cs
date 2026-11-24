@@ -29,6 +29,7 @@ public class MainMenuUI : MonoBehaviour
 
     private void Start()
     {
+// Suggestion: bloque de codigo comentado. Si no se usa, borralo; si lo vas a usar para WebGL, descomentalo.
 //#if UNITY_WEBGL
 //        if (_exitButton)
 //        {
@@ -91,6 +92,7 @@ public class MainMenuUI : MonoBehaviour
 
     private void PlayGame()
     {
+        // Warning: nombre de escena como string magico. Declara const string GameplaySceneName = "Gameplay"; o serializa el nombre.
         SceneManager.LoadScene("Gameplay");
     }
 
@@ -116,6 +118,8 @@ public class MainMenuUI : MonoBehaviour
         _optionsPanel.SetActive(true);
     }
 
+    // Bug: el AudioPanel de CanvasMainMenu.prefab tiene SliderMaster, SliderMusic y SliderSFX, pero en la escena MainMenu no hay ningun SettingsAudioUI
+    // (solo esta en Gameplay.unity). Los sliders del menu principal no cambian el AudioMixer. Agrega SettingsAudioUI al canvas del menu y asigna sus referencias.
     private void ShowAudioPanel()
     {
         _optionsPanel.SetActive(false);

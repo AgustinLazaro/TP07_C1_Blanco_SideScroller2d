@@ -85,6 +85,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void HandleSpriteFlip()
     {
+        // Suggestion: comparas el float xInput con != 0. Con GetAxisRaw funciona porque devuelve -1, 0 o 1, pero si pasas a GetAxis deja de ser exacto.
+        // Usa Mathf.Abs(xInput) > 0.01f o Mathf.Approximately.
         if (xInput != 0)
         {
             float facingDirection = xInput > 0 ? 1f : -1f;
@@ -94,6 +96,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void HandleFootstepAudio()
     {
+        // Suggestion: misma comparacion de float con != 0 que en la linea 88. Unificala con un helper o una property HasHorizontalInput.
         bool isMoving = xInput != 0 && IsGrounded;
 
         if (isMoving)
@@ -116,6 +119,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void UpdateAnimations()
     {
+        // Warning: los nombres de parametros del Animator ("Speed", "IsCrouching", "IsGrounded", "yVelocity") son strings magicos y se hashean en cada frame.
+        // Declaralos como private static readonly int con Animator.StringToHash y usa esas constantes.
         anim.SetFloat("Speed", Mathf.Abs(xInput));
         anim.SetBool("IsCrouching", IsCrouching);
         anim.SetBool("IsGrounded", IsGrounded);
@@ -129,6 +134,8 @@ public class PlayerMovement : MonoBehaviour
         wasGrounded = IsGrounded;
         IsGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, groundLayer);
 
+        // Bug: wasGrounded arranca en false, asi que en el primer FixedUpdate de la escena el jugador ya esta en el piso y suena landingSound sin haber saltado.
+        // Inicializa wasGrounded e IsGrounded con un chequeo en Awake/Start, o ignora el primer frame.
         if (IsGrounded && !wasGrounded)
         {
             sfxSource.PlayOneShot(landingSound);
@@ -138,6 +145,7 @@ public class PlayerMovement : MonoBehaviour
     private void HandleMovementAndCrouching()
     {
         float currentSpeed = data.moveSpeed;
+        // Suggestion: reasignas col.size y col.offset en cada FixedUpdate aunque el estado de agachado no haya cambiado. Cambialos solo cuando IsCrouching cambia de valor.
         col.size = standSize;
         col.offset = standOffset;
 
@@ -155,6 +163,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (requestedJump)
         {
+            // Suggestion: Vector2.zero.y es simplemente 0f. Escribi new Vector2(rb.linearVelocity.x, 0f) para que se lea mas claro.
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, Vector2.zero.y);
             rb.AddForce(Vector2.up * data.jumpForce, ForceMode2D.Impulse);
 

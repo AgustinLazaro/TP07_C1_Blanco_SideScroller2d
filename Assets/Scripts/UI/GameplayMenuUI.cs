@@ -2,6 +2,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+// Suggestion: ShowOptions, HideOptions, ShowGameplayConfig, BackToOptionsFromGameplay, ShowAudioPanel y BackToOptionsFromAudio estan duplicados
+// textualmente en MainMenuUI.cs. Extrae la navegacion de paneles de opciones a un componente comun (por ejemplo OptionsMenuUI) y reutilizalo en las dos escenas.
 public class GameplayMenuUI : MonoBehaviour
 {
     [Header("Panels")]
@@ -131,6 +133,7 @@ public class GameplayMenuUI : MonoBehaviour
     private void ReturnToMainMenu()
     {
         Time.timeScale = 1f;
+        // Warning: nombre de escena como string magico. Declara const string MainMenuSceneName = "MainMenu"; o serializa el nombre.
         SceneManager.LoadScene("MainMenu");
     }
 }

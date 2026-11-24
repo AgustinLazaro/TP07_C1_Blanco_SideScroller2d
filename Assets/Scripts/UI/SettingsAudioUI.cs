@@ -14,6 +14,8 @@ public class SettingsAudioUI : MonoBehaviour
 
     private void Start()
     {
+        // Warning: los nombres de parametros expuestos del AudioMixer ("MasterVolume", "MusicVolume", "SFXVolume") se repiten como strings en las lineas 17 a 19 y 43 a 53.
+        // Declaralos como const string una sola vez para no desincronizarlos con MainMixer.mixer.
         InitializeSlider(_masterSlider, "MasterVolume");
         InitializeSlider(_musicSlider, "MusicVolume");
         InitializeSlider(_sfxSlider, "SFXVolume");

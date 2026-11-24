@@ -32,6 +32,8 @@ public class Projectile : MonoBehaviour
     #region Logic Methods
     private void InitializeProjectile()
     {
+        // Warning: el sonido de disparo lo reproduce el AudioSource del propio proyectil, que se destruye al impactar (linea 50) o a los data.lifeTime segundos.
+        // El clip se corta. Reproducilo desde el AudioSource del jugador en PlayerAttack o con AudioSource.PlayClipAtPoint.
         audioSource.PlayOneShot(slashSound);
 
         float direction = Mathf.Sign(transform.localScale.x);
@@ -44,6 +46,7 @@ public class Projectile : MonoBehaviour
     {
         EnemyHealth enemy = collision.GetComponent<EnemyHealth>();
 
+        // Suggestion: el proyectil solo se destruye contra enemigos; si toca el piso o un obstaculo lo atraviesa. Destruilo tambien al chocar con la capa Ground.
         if (enemy != null)
         {
             enemy.TakeDamage(data.damage);
